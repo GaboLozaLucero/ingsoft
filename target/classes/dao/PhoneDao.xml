@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.PhoneDao">
+    <select id="findByPhoneId" resultType="bo.ucb.edu.ingsoft.dto.Phone">
+        SELECT
+               phone_id as phoneId,
+               phone_number as phoneNumber
+        FROM phone
+        WHERE
+            phone_id = 1
+    </select>
+    <insert id="create" parameterType="bo.ucb.edu.ingsoft.dto.Phone">
+        INSERT INTO phone VALUES (null ,#{phoneNumber}, #{contactId}, 1, #{txId}, #{txHost}, #{txUserId}, #{txDate})
+
+    </insert>
+</mapper>

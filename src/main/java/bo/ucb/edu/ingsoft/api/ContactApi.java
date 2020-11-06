@@ -2,8 +2,7 @@ package bo.ucb.edu.ingsoft.api;
 
 import bo.ucb.edu.ingsoft.bl.AgendaBl;
 import bo.ucb.edu.ingsoft.bl.TransactionBl;
-import bo.ucb.edu.ingsoft.dto.Contact;
-import bo.ucb.edu.ingsoft.dto.Transaction;
+import bo.ucb.edu.ingsoft.dto.*;
 import bo.ucb.edu.ingsoft.util.TransactionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,18 +32,45 @@ public class ContactApi {
     }
 
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Contact findById(HttpServletRequest request) {
+    public ContactRequest findContactById(HttpServletRequest request) {
         return agendaBl.findContactById(0);
     }
 
-
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Contact createContact(@RequestBody Contact contact, HttpServletRequest request) {
+    public ContactRequest createContact(@RequestBody ContactRequest contactRequest, Phone phone, Address address, HttpServletRequest request) {
         // Creamos transaccion para la operación.
         Transaction transaction = TransactionUtil.createTransaction(request);
         transactionBl.createTransaction(transaction);
-        Contact contactResponse = agendaBl.createContact(contact, transaction);
-        return contactResponse;
+        ContactRequest contactRequestResponse = agendaBl.createContact(contactRequest, transaction, phone, address);
+        return contactRequestResponse;
     }
+
+
+    /*@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Address findAddressById(HttpServletRequest request) {
+        return agendaBl.findAddressById(0);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Address createAddress(@RequestBody Address address, HttpServletRequest request) {
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        Address addressResponse = agendaBl.createAddress(address, transaction);
+        return addressResponse;
+    }
+
+
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Phone findPhoneById(HttpServletRequest request) {
+        return agendaBl.findPhoneById(0);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Phone createPhone(@RequestBody Phone phone, HttpServletRequest request) {
+        Transaction transaction = TransactionUtil.createTransaction(request);
+        transactionBl.createTransaction(transaction);
+        Phone phoneResponse = agendaBl.createPhone(phone, transaction);
+        return phoneResponse;
+    }*/
 }

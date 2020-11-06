@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bo.ucb.edu.ingsoft.dao.AddressDao">
+    <select id="findByAddressId" resultType="bo.ucb.edu.ingsoft.dto.Address">
+        SELECT
+               address_id as addressId,
+               street as street,
+               city as city,
+               country as country
+        FROM address
+        WHERE
+            address_id = 1
+    </select>
+    <insert id="create" parameterType="bo.ucb.edu.ingsoft.dto.Address">
+        INSERT INTO address VALUES (null, #{street}, #{city}, #{country}, #{contactId}, #{txId}, #{txHost}, #{txUserId}, #{txDate})
+    </insert>
+</mapper>

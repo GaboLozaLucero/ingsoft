@@ -20,10 +20,10 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "firstName": "Juan",
-  "firstSurname": "Perez",
-  "phoneNumber": "70834566",
-  "addresStreet": "14 de septiembre",
-  "addresCity": "La Paz",
-  "addresCoutry": "Bolivia"
+  "firstName": "Mauricio",
+  "firstSurname": "Loza",
+  "phoneNumber": "75234666",
+  "street": "16 de julio",
+  "city": "Cochabamba",
+  "country": "Bolivia"
 }

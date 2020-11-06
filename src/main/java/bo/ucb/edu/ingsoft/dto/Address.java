@@ -2,60 +2,26 @@ package bo.ucb.edu.ingsoft.dto;
 
 import java.util.Date;
 
-public class ContactRequest {
-
-    /*
-    {
-  "firstName": "Juan",
-  "firstSurname": "Perez",
-  "phoneNumber": "70834566",
-  "Street": "14 de septiembre",
-  "City": "La Paz",
-  "Country": "Bolivia"
-    }
-     */
-    private Integer contactId;
-    private String firstName;
-    private String firstSurname;
-    private String phoneNumber;
+public class Address {
+    private Integer addressId;
     private String street;
     private String city;
     private String country;
+    private Integer contactId;
     private Integer txId;
     private String txHost;
     private Integer txUserId;
     private Date txDate;
 
-    public Integer getContactId() {
-        return contactId;
+    public Address(){
     }
 
-    public void setContactId(Integer contactId) {
-        this.contactId = contactId;
+    public Integer getAddressId() {
+        return addressId;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getFirstSurname() {
-        return firstSurname;
-    }
-
-    public void setFirstSurname(String firstSurname) {
-        this.firstSurname = firstSurname;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
     }
 
     public String getStreet() {
@@ -80,6 +46,14 @@ public class ContactRequest {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Integer getContactId() {
+        return contactId;
+    }
+
+    public void setContactId(Integer contactId) {
+        this.contactId = contactId;
     }
 
     public Integer getTxId() {
@@ -116,14 +90,12 @@ public class ContactRequest {
 
     @Override
     public String toString() {
-        return "ContactRequest{" +
-                "contactId=" + contactId +
-                ", firstName='" + firstName + '\'' +
-                ", firstSurname='" + firstSurname + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+        return "Address{" +
+                "addressId=" + addressId +
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", country='" + country + '\'' +
+                ", contactId=" + contactId +
                 ", txId=" + txId +
                 ", txHost='" + txHost + '\'' +
                 ", txUserId=" + txUserId +
